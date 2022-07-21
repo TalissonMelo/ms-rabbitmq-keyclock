@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ClienteService {
+public class ClienteServico {
 
     private final ClienteRepositorio repositorio;
 
