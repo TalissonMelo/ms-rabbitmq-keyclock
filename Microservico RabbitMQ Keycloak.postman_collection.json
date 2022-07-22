@@ -1,0 +1,53 @@
+{
+	"info": {
+		"_postman_id": "c65166fa-8ddc-49ff-bc8a-c9460a04e43b",
+		"name": "Microservico RabbitMQ Keycloak",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Clientes",
+			"item": [
+				{
+					"name": "Cadastrar Cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Midorya\",\r\n    \"idade\": 16,\r\n    \"cfp\" : \"000.000.000-00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{PORTA_RANDOMICA}/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{PORTA_RANDOMICA}",
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Cliente CPF",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
