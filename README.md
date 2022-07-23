@@ -1,4 +1,4 @@
-# Spring Boot Microservices
+# Spring Boot Microservices, RabbitMQ e Keycloak.
 
 ### Descrição do Projeto
 
@@ -18,7 +18,7 @@ A mesma verifica em qual microservice ela tem que ir atraves do service registry
 
 API GATEWAY faz com que o cliente nao consiga acessar diretamente nenhum microservice. 
 
-![exemplo](https://github.com/TalissonMelo/spring-boot-microservices-docker/blob/master/ms-imagem/api-gateway.jpg)
+![exemplo](https://github.com/TalissonMelo/ms-rabbitmq-keyclock/blob/main/ms-imagem/api-gateway.jpg)
 
 ## Service Discovery
 
@@ -26,7 +26,7 @@ O Service Discovery é um dos principais princípios da arquitetura baseada em m
 
 O ideal nessa situação seria que o serviço comunica-se ao servidor ou até mesmo a algum serviço que poderia chamá-lo que está disponível para ser requisitado.
 
-![exemplo](https://github.com/TalissonMelo/spring-boot-microservices-docker/blob/master/ms-imagem/service-registry.jpg)
+![exemplo](https://github.com/TalissonMelo/ms-rabbitmq-keyclock/blob/main/ms-imagem/service-registry.jpg)
 
 ## Service Broker 
 
@@ -34,5 +34,10 @@ O Service Broker fornece enfileiramento e mensagens confiáveis para as requisi�
 
 O Service Broker usa TCP/IP para trocar mensagens entre instâncias. O Service Broker contém recursos para ajudar a impedir o acesso não autorizado da rede e para criptografar mensagens enviadas pela rede usa a comunicação assíncrona você envia a mensagem, caso o destinaria esteja indisponível o RabbitMQ guarda a mensagem e quando o service estiver disponível ele entrega a mensagem como no exemplo abaixo.
 
-![exemplo](https://github.com/TalissonMelo/spring-boot-microservices-docker/blob/master/ms-imagem/service-broker.jpg)
+![exemplo](https://github.com/TalissonMelo/ms-rabbitmq-keyclock/blob/main/ms-imagem/service-broker.jpg)
 
+## RabbitMQ
+
+O RabbitMQ é um software de enfileiramento de mensagens também conhecido como intermediário de mensagens ou gerenciador de filas.
+
+Quando o usuário inserir informações do usuário na interface da web, o aplicativo da web criará uma mensagem que inclui todas as informações importantes que o usuário precisa em uma mensagem e a colocará em uma fila definida no RabbitMQ.
