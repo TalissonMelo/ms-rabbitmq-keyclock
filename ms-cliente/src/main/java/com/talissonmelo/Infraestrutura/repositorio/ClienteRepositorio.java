@@ -1,4 +1,4 @@
-package com.talissonmelo.Infraestrutura.Repositorio;
+package com.talissonmelo.Infraestrutura.repositorio;
 
 import com.talissonmelo.modelo.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;

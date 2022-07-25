@@ -82,6 +82,59 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Cartões",
+			"item": [
+				{
+					"name": "Verifica status microservice de cartões",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cartoes/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cartoes",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Cartão",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Bradesco visa\",\r\n    \"bandeiraCartao\": \"VISA\",\r\n    \"renda\" : 1200,\r\n    \"limite\" : 350\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cartoes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cartoes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

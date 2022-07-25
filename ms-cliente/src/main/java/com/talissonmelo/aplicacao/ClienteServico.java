@@ -1,6 +1,6 @@
 package com.talissonmelo.aplicacao;
 
-import com.talissonmelo.Infraestrutura.Repositorio.ClienteRepositorio;
+import com.talissonmelo.Infraestrutura.repositorio.ClienteRepositorio;
 import com.talissonmelo.modelo.Cliente;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
