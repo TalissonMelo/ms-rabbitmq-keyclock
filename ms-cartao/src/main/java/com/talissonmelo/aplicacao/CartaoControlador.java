@@ -35,7 +35,7 @@ public class CartaoControlador {
     @GetMapping(params = "renda")
     public ResponseEntity<List<Cartao>> getCartoesRendaAte(@RequestParam("renda") Long renda) {
         List<Cartao> cartoes = cartaoServico.buscarCartaoRendaMenorIgual(renda);
-        return ResponseEntity.ok().body(cartoes);
+        return ResponseEntity.ok(cartoes);
     }
 
     @GetMapping(params = "cpf")

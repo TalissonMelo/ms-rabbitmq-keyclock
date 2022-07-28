@@ -107,13 +107,63 @@
 					"response": []
 				},
 				{
+					"name": "Buscar cartoes renda",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cartoes?renda=50",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cartoes"
+							],
+							"query": [
+								{
+									"key": "renda",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar cartoes por cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cartoes?cpf=000.000.000-00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cartoes"
+							],
+							"query": [
+								{
+									"key": "cpf",
+									"value": "000.000.000-00"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Cadastrar Cartão",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Bradesco visa\",\r\n    \"bandeiraCartao\": \"VISA\",\r\n    \"renda\" : 1200,\r\n    \"limite\" : 350\r\n}",
+							"raw": "{\r\n    \"nome\": \"Bradesco visa\",\r\n    \"bandeiraCartao\": \"VISA\",\r\n    \"renda\" : 3000,\r\n    \"limite\" : 3500\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
