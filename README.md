@@ -41,3 +41,13 @@ O Service Broker usa TCP/IP para trocar mensagens entre instâncias. O Service B
 O RabbitMQ é um software de enfileiramento de mensagens também conhecido como intermediário de mensagens ou gerenciador de filas.
 
 Quando o usuário inserir informações do usuário na interface da web, o aplicativo da web criará uma mensagem que inclui todas as informações importantes que o usuário precisa em uma mensagem e a colocará em uma fila definida no RabbitMQ.
+
+![exemplo](https://github.com/TalissonMelo/ms-rabbitmq-keyclock/blob/main/ms-imagem/exemplo.jpg)
+
+<b>Publisher</b> -> Publica a mensagem.
+
+<b>Exchange</b> -> Pega a mensagem, processa e encaminha para fila.
+
+<b>Queue</b> -> Fila 
+
+<b>Consumer</b> ->  Receptor da mensagem.
