@@ -26,7 +26,7 @@ public class CartaoControlador {
     }
 
     @PostMapping
-    public ResponseEntity salvar(CartaoInsercao insercao){
+    public ResponseEntity salvar( @RequestBody CartaoInsercao insercao){
         Cartao cartao = new Cartao(insercao);
         cartaoServico.salvar(cartao);
         return ResponseEntity.status(HttpStatus.CREATED).build();
