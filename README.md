@@ -51,3 +51,14 @@ Quando o usuário inserir informações do usuário na interface da web, o aplic
 <b>Queue</b> -> Fila 
 
 <b>Consumer</b> ->  Receptor da mensagem.
+
+![exemplo](https://github.com/TalissonMelo/ms-rabbitmq-keyclock/blob/main/ms-imagem/rabbitmq.png)
+
+1 - O usuário envia uma solicitação de criação de mensagem (JSON) para o aplicativo da web.
+
+2 - O aplicativo da web (o produtor) envia uma mensagem ao RabbitMQ que inclui dados da solicitação, como nome e e-mail.
+
+3 - Uma troca aceita as mensagens do produtor e as encaminha para as filas de mensagens corretas para a entrega da mensagem.
+
+4 - O consumidor recebe a mensagem e inicia o processamento da mesma.
+
