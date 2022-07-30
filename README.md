@@ -62,3 +62,17 @@ Quando o usuário inserir informações do usuário na interface da web, o aplic
 
 4 - O consumidor recebe a mensagem e inicia o processamento da mesma.
 
+##Fluxo de mensagens no RabbitMQ
+
+![exemplo](https://github.com/TalissonMelo/ms-rabbitmq-keyclock/blob/main/ms-imagem/exchanges-bidings-routing-keys.png)
+
+1- O produtor publica uma mensagem para uma troca. Ao criar uma troca, o tipo deve ser especificado.
+
+2 - A exchange recebe a mensagem e agora é responsável pelo roteamento da mensagem. A troca leva em consideração diferentes atributos de mensagem, como a chave de roteamento, dependendo do tipo de troca.
+
+3 - As ligações devem ser criadas da troca para as filas. Nesse caso, há duas ligações para duas filas diferentes da troca. A troca roteia a mensagem para as filas dependendo dos atributos da mensagem.
+
+4 - As mensagens permanecem na fila até serem tratadas por um consumidor
+
+5 - O consumidor manipula a mensagem.
+
