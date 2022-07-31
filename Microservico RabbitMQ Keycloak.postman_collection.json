@@ -185,6 +185,31 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Avaliador de crédito",
+			"item": [
+				{
+					"name": "Verifica status microservice de avaliador de crédito",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/avaliacoes-credito/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"avaliacoes-credito",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
