@@ -208,6 +208,39 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Avaliador de crédito",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "cpf",
+								"value": "100.000.000-00",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/avaliacoes-credito/situacao-cliente?cpf=100.000.000-00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"avaliacoes-credito",
+								"situacao-cliente"
+							],
+							"query": [
+								{
+									"key": "cpf",
+									"value": "100.000.000-00"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
