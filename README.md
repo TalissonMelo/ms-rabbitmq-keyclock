@@ -52,6 +52,8 @@ Quando o usuário inserir informações do usuário na interface da web, o aplic
 
 <b>Consumer</b> ->  Receptor da mensagem.
 
+## Fluxo de mensagens no RabbitMQ
+
 ![exemplo](https://github.com/TalissonMelo/ms-rabbitmq-keyclock/blob/main/ms-imagem/rabbitmq.png)
 
 1 - O usuário envia uma solicitação de criação de mensagem (JSON) para o aplicativo da web.
@@ -62,7 +64,7 @@ Quando o usuário inserir informações do usuário na interface da web, o aplic
 
 4 - O consumidor recebe a mensagem e inicia o processamento da mesma.
 
-##Fluxo de mensagens no RabbitMQ
+## Exchanges
 
 ![exemplo](https://github.com/TalissonMelo/ms-rabbitmq-keyclock/blob/main/ms-imagem/exchanges-bidings-routing-keys.png)
 
@@ -75,4 +77,16 @@ Quando o usuário inserir informações do usuário na interface da web, o aplic
 4 - As mensagens permanecem na fila até serem tratadas por um consumidor
 
 5 - O consumidor manipula a mensagem.
+
+## Tipos de exchanges
+
+![exemplo](https://github.com/TalissonMelo/ms-rabbitmq-keyclock/blob/main/ms-imagem/exchanges-topic-fanout-direct.png)
+
+ <b> Direct: </b> A mensagem é roteada para as filas cuja chave de ligação corresponde exatamente à chave de roteamento da mensagem. 
+ 
+ <b> Fanout: </b> Uma troca de fanout roteia mensagens para todas as filas vinculadas a ela.
+ 
+ <b> Topic:</b> A troca de topic faz uma correspondência curinga entre a chave de roteamento e o padrão de roteamento especificado na ligação. 
+
+
 
