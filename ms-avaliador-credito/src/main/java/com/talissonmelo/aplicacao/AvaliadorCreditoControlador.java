@@ -1,8 +1,11 @@
 package com.talissonmelo.aplicacao;
 
+import com.talissonmelo.exception.ComunicacaoMicroservicoException;
+import com.talissonmelo.exception.DadosClientesNaoEncontrados;
 import com.talissonmelo.servico.AvaliadorCreditoServico;
 import com.talissonmelo.modelo.SituacaoCliente;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,9 +25,14 @@ public class AvaliadorCreditoControlador {
     }
 
     @GetMapping(value = "/situacao-cliente", params = "cpf")
-    public ResponseEntity<SituacaoCliente> buscarSituacaoCliente(@RequestParam("cpf") String cpf){
-        SituacaoCliente situacaoCliente = avaliadorCreditoServico.buscarSituacaoCliente(cpf);
-        return ResponseEntity.ok(situacaoCliente);
-
+    public ResponseEntity buscarSituacaoCliente(@RequestParam("cpf") String cpf) {
+        try {
+            SituacaoCliente situacaoCliente = avaliadorCreditoServico.buscarSituacaoCliente(cpf);
+            return ResponseEntity.ok(situacaoCliente);
+        } catch (DadosClientesNaoEncontrados e) {
+            return ResponseEntity.notFound().build();
+        } catch (ComunicacaoMicroservicoException e) {
+            return ResponseEntity.status(HttpStatus.resolve(e.getStatus())).body(e.getMessage());
+        }
     }
 }
