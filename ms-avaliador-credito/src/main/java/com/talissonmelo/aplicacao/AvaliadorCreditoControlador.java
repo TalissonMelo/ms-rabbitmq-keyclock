@@ -2,6 +2,7 @@ package com.talissonmelo.aplicacao;
 
 import com.talissonmelo.exception.ComunicacaoMicroservicoException;
 import com.talissonmelo.exception.DadosClientesNaoEncontrados;
+import com.talissonmelo.modelo.AvaliacaoCliente;
 import com.talissonmelo.modelo.DadosAvaliacao;
 import com.talissonmelo.modelo.SituacaoCliente;
 import com.talissonmelo.servico.AvaliadorCreditoServico;
@@ -36,6 +37,13 @@ public class AvaliadorCreditoControlador {
 
     @PostMapping
     public ResponseEntity realizarAvaliacao(@RequestBody DadosAvaliacao dados) {
-        return null;
+        try {
+            AvaliacaoCliente avaliacaoCliente = avaliadorCreditoServico.realizarAvaliacao(dados.getCpf(), dados.getRenda());
+            return  ResponseEntity.ok(avaliacaoCliente);
+        } catch (DadosClientesNaoEncontrados e) {
+            return ResponseEntity.notFound().build();
+        } catch (ComunicacaoMicroservicoException e) {
+            return ResponseEntity.status(HttpStatus.resolve(e.getStatus())).body(e.getMessage());
+        }
     }
 }

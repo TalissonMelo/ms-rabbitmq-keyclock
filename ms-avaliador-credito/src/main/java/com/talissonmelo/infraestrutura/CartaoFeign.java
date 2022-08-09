@@ -1,5 +1,6 @@
 package com.talissonmelo.infraestrutura;
 
+import com.talissonmelo.modelo.Cartao;
 import com.talissonmelo.modelo.CartaoCliente;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -17,4 +18,10 @@ public interface CartaoFeign {
 
     @GetMapping(params = "cpf")
     ResponseEntity<List<CartaoCliente>> getCartaoClienteCpf(@RequestParam("cpf") String cpf);
+
+
+    @GetMapping(params = "renda")
+    public ResponseEntity<List<Cartao>> getCartoesRendaAte(@RequestParam("renda") Long renda);
+
+
 }
