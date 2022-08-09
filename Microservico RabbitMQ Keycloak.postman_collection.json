@@ -42,7 +42,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/clientes?cpf=000.000.000-00",
+							"raw": "http://localhost:8080/clientes?cpf=100.000.000-01",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -54,7 +54,7 @@
 							"query": [
 								{
 									"key": "cpf",
-									"value": "000.000.000-00"
+									"value": "100.000.000-01"
 								}
 							]
 						}
@@ -222,7 +222,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/avaliacoes-credito/situacao-cliente?cpf=100.000.000-00",
+							"raw": "http://localhost:8080/avaliacoes-credito/situacao-cliente?cpf=100.000.000-01",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -235,8 +235,43 @@
 							"query": [
 								{
 									"key": "cpf",
-									"value": "100.000.000-00"
+									"value": "100.000.000-01"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Avaliador Cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "cpf",
+								"type": "text",
+								"value": "100.000.000-00",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\":\"100.000.000-01\",\r\n    \"renda\": 4000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/avaliacoes-credito",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"avaliacoes-credito"
 							]
 						}
 					},
