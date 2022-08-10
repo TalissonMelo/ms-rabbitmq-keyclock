@@ -88,5 +88,51 @@ Quando o usuário inserir informações do usuário na interface da web, o aplic
  
  <b> Topic:</b> A troca de topic faz uma correspondência curinga entre a chave de roteamento e o padrão de roteamento especificado na ligação. 
 
+## Direct 
+
+###### Envia expecificamente para uma fila.
+
+![exemplo](https://github.com/TalissonMelo/ms-rabbitmq-keyclock/blob/main/ms-imagem/direct.jpg)
+
+## Fanout 
+
+###### Vai mandar esta mensagem para os que estão relacionadas a esta exchange (envia para todas).
+
+![exemplo](https://github.com/TalissonMelo/ms-rabbitmq-keyclock/blob/main/ms-imagem/fanout.jpg)
+
+## Topic 
+
+###### Adiciona regras (Dependente do Tipo da mensagem (routing key) mando para uma exchange).
+
+![exemplo](https://github.com/TalissonMelo/ms-rabbitmq-keyclock/blob/main/ms-imagem/topic.jpg)
+
+## Headers 
+
+###### Menos utilizado (No Headers fica expecificado a fila para qual deve ser enviada).
+
+![exemplo](https://github.com/TalissonMelo/ms-rabbitmq-keyclock/blob/main/ms-imagem/exemplo.jpg)
 
 
+#### FIFO -> Primeira que entrou primeira que vai sair
+Propriedades: 
+	
+ Durable ou não: Se ela deve ser salva mesmo depois do restart do broker
+	
+ Auto-delete: Removida automaticamente quando o consumer se desconecta
+	
+ Expiry: Define um tempo de espera para fila ou tempo que não há mensagens ou clientes consumindo a mesma
+	
+ Message TTL: Tempo de vida da mensagem (Se ninguem consumila remove a mesma)
+	
+ Overflow : Quando esta fila Transborda 
+	   > Drop Head (remove a última e entra uma nova mensagem)
+	   > Reject publich (Fila lotada o publicador não consegue mais registrar na fila)
+	
+ Exclusive: Somente channel que criou pode acessar
+	
+ Max Length ou bytes: Quantidade de mensagens ou tamanho em bytes maximo permitido
+	
+ Armazenar Mensagens em disco
+	
+
+http://tryrabbitmq.com/
