@@ -2,8 +2,10 @@ package com.talissonmelo.servico;
 
 import com.talissonmelo.exception.ComunicacaoMicroservicoException;
 import com.talissonmelo.exception.DadosClientesNaoEncontrados;
+import com.talissonmelo.exception.SolicitacaoCartaoException;
 import com.talissonmelo.infraestrutura.CartaoFeign;
 import com.talissonmelo.infraestrutura.ClienteFeign;
+import com.talissonmelo.infraestrutura.rabbitmq.SolicitacaoEmissaoCartaoPublisher;
 import com.talissonmelo.modelo.*;
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,6 +24,8 @@ public class AvaliadorCreditoServico {
 
     private final ClienteFeign clienteFeign;
     private final CartaoFeign cartaoFeign;
+
+    private final SolicitacaoEmissaoCartaoPublisher publisher;
 
     public SituacaoCliente buscarSituacaoCliente(String cpf) throws DadosClientesNaoEncontrados, ComunicacaoMicroservicoException {
 
@@ -52,7 +57,7 @@ public class AvaliadorCreditoServico {
             List<CartaoAprovado> cartaoAprovados = cartoes.stream().map((cartao) -> {
                 DadosCliente dadosCliente = dadosClientes.getBody();
                 BigDecimal valor = cartao.getLimite();
-                BigDecimal idadeDadosCliente = BigDecimal.valueOf( dadosCliente.getIdade() );
+                BigDecimal idadeDadosCliente = BigDecimal.valueOf(dadosCliente.getIdade());
                 BigDecimal fator = idadeDadosCliente.divide(BigDecimal.valueOf(10));
                 BigDecimal limiteAprovado = fator.multiply(valor);
 
@@ -70,6 +75,16 @@ public class AvaliadorCreditoServico {
                 throw new DadosClientesNaoEncontrados();
             }
             throw new ComunicacaoMicroservicoException(e.getMessage(), e.status());
+        }
+    }
+
+    public ProtocoloSolicitacaoCartao solicitarEmissaoCartao(DadosSolicitacaoEmissaoCartao dados) {
+        try {
+            publisher.solicitarCartao(dados);
+            var protocolo = UUID.randomUUID().toString();
+            return new ProtocoloSolicitacaoCartao(protocolo);
+        } catch (Exception e) {
+            throw new SolicitacaoCartaoException(e.getMessage());
         }
     }
 }

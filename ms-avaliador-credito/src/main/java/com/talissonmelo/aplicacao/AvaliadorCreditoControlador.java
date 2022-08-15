@@ -2,9 +2,8 @@ package com.talissonmelo.aplicacao;
 
 import com.talissonmelo.exception.ComunicacaoMicroservicoException;
 import com.talissonmelo.exception.DadosClientesNaoEncontrados;
-import com.talissonmelo.modelo.AvaliacaoCliente;
-import com.talissonmelo.modelo.DadosAvaliacao;
-import com.talissonmelo.modelo.SituacaoCliente;
+import com.talissonmelo.exception.SolicitacaoCartaoException;
+import com.talissonmelo.modelo.*;
 import com.talissonmelo.servico.AvaliadorCreditoServico;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -44,6 +43,16 @@ public class AvaliadorCreditoControlador {
             return ResponseEntity.notFound().build();
         } catch (ComunicacaoMicroservicoException e) {
             return ResponseEntity.status(HttpStatus.resolve(e.getStatus())).body(e.getMessage());
+        }
+    }
+
+    @PostMapping(value = "/solicitacao-cartao")
+    public ResponseEntity solicitacaoCartao(@RequestBody DadosSolicitacaoEmissaoCartao dados) {
+        try {
+            ProtocoloSolicitacaoCartao solicitacaoCartao = avaliadorCreditoServico.solicitarEmissaoCartao(dados);
+            return ResponseEntity.ok(solicitacaoCartao);
+        } catch (SolicitacaoCartaoException e) {
+            return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
 }
