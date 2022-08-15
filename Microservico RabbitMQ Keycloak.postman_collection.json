@@ -276,6 +276,42 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Solicitação emissão cartão",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "cpf",
+								"type": "text",
+								"value": "100.000.000-00",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCartao\": 1,\r\n    \"cpf\":\"100.000.000-01\",\r\n    \"endereco\" : \"Rua XXX\",\r\n    \"limiteliberado\" : 20000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/avaliacoes-credito/solicitacao-cartao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"avaliacoes-credito",
+								"solicitacao-cartao"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
