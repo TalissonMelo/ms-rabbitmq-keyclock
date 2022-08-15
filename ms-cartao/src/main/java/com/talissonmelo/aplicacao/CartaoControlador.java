@@ -4,6 +4,8 @@ import com.talissonmelo.modelo.Cartao;
 import com.talissonmelo.modelo.ClienteCartao;
 import com.talissonmelo.modelo.dto.CartaoInsercao;
 import com.talissonmelo.modelo.dto.CartoesPorCliente;
+import com.talissonmelo.servico.CartaoServico;
+import com.talissonmelo.servico.ClienteCartaoServico;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

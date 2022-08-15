@@ -1,4 +1,4 @@
-package com.talissonmelo.aplicacao;
+package com.talissonmelo.servico;
 
 import com.talissonmelo.infraestrutura.repositorio.ClienteCartaoRepositorio;
 import com.talissonmelo.modelo.ClienteCartao;
