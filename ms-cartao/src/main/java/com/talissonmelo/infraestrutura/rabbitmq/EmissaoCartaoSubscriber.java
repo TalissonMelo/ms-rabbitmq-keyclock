@@ -37,7 +37,7 @@ public class EmissaoCartaoSubscriber {
             clienteCartaoRepositorio.save(clienteCartao);
 
         } catch (Exception e) {
-            log.error("Erro ao receber solicitação de emissão de cartão!. {} " e.getMessage());
+            log.error("Erro ao receber solicitação de emissão de cartão!. {} ", e.getMessage());
         }
     }
 }
