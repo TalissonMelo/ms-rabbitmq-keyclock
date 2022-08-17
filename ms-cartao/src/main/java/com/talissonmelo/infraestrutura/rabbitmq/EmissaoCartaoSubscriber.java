@@ -7,12 +7,14 @@ import com.talissonmelo.modelo.Cartao;
 import com.talissonmelo.modelo.ClienteCartao;
 import com.talissonmelo.modelo.DadosSolicitacaoEmissaoCartao;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class EmissaoCartaoSubscriber {
 
     private final CartaoRepositorio cartaoRepositorio;
@@ -35,7 +37,7 @@ public class EmissaoCartaoSubscriber {
             clienteCartaoRepositorio.save(clienteCartao);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Erro ao receber solicitação de emissão de cartão!. {} " e.getMessage());
         }
     }
 }
